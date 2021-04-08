@@ -1,83 +1,105 @@
-const express = require('express');
-const User = require('../modules/User');
+const User = require('../modules/User')
 const jwt = require('jsonwebtoken')
+const { render } = require('ejs')
 
-const handleErrors = (err)=>{
-    console.log(err.message,err.code);
-    let errors = {email:'',password:''};
-    //duplicate error code
-    if(err.code === 11000){
-        errors.email = 'that email is already registered';
+const headerError = (err)=>{
+
+    let errors = {email:'',password:''}//add value in to email
+    // duplicate error code
+    
+    
+    if(err.code ===11000){
+        errors.email = 'This email is already registered'
         return errors;
     }
-    
-    //validation errors
+    // validation errors
+    console.log(err.message,err.code);
     if(err.message.includes('user validation failed')){
         Object.values(err.errors).forEach(({properties})=>{
-            errors[properties.path]=properties.message
+            errors[properties.path] = properties.message
         })
     }
-    // email incorrect
-    if(err.message ==='Type a valid email'){
-        errors.email='this password is incorrect';
+    if(err.message==='incorrect password'){
+        errors.password = 'This password is incorrect'
     }
-    //password incorrect
-    if(err.message ==='Type a password'){
-        errors.password='this password is incorrect';
+    
+    if(err.message==='incorrect email'){
+        errors.email = 'This email is not registered'
     }
+
     return errors;
+
+    
+
 }
 
 const maxAge = 3*24*60*60
 const createToken = (id)=>{
     return jwt.sign({id},'net hung secret',{
         expiresIn:maxAge
-    })
+    });
 }
 
-const homepage = (req,res)=>{
-    res.render('home');
+const homepage = (req, res)=>{
+    res.render('home')
 }
-const log_in = (req,res)=>{
-    res.render('login');
+const login_get = (req,res)=>{
+    res.render('login')
 }
-const log_post = async(req,res)=>{
-    const {email,password} = req.body;
+const signup_get = (req,res)=>{
+    res.render('signup')
+}
+const login_post = async (req,res)=>{
+    const {email,password}= req.body
     
     try{
-        const user =await User.login({email,password})
+        const user = await User.login(email,password)
         const token = createToken(user._id);
         res.cookie('jwt',token,{httpOnly:true,maxAge:maxAge*1000})
-        res.status(201).json({user:user._id})
-        console.log('User is loging')
+        res.status(200).json({user:user._id})
     }
     catch(err){
-        const errors = handleErrors(err)
-        res.status(400).send('user has trouble')
+        const errors = headerError(err)
+        res.status(400).json({errors})
+    }
+}
+const smoothies = (req,res)=>{ res.render('smoothies')}
 
-    }
-    
-}
-const sign_up = (req,res)=>{
-    res.render('signup');
-}
-const sign_post = async(req,res)=>{
-    const {email,password} = req.body;
-    try{
-        const user =await User.create({email,password})
-        const token = createToken(user._id);
-        res.cookie('jwt',token,{httpOnly:true,maxAge:maxAge*1000})
-        res.status(201).json({user:user._id})
-        console.log('User is created')
-    }
-    catch(err){
-        const errors = handleErrors(err)
-        res.status(404).json({errors})
 
-    }
+const signup_post = async (req,res)=>{
+   const {email,password} = req.body;
+
+   try{
+       const user = await User.create({email,password})
+       const token = createToken(user._id) 
+       res.cookie('jwt',token,{httpOnly:true,maxAge:maxAge*1000})
+       res.status(201).json({user:user._id})
+       
+       
+        
+   }
+   catch(err){
+    const errors = headerError(err);
+    res.status(400).json({errors})
+   }
 }
+
+
+
+
+
 const log_out = (req,res)=>{
+    const {email} = req.body
     res.cookie('jwt','',{maxAge:1})
     res.redirect('/')
+    console.log(user.id+' left')
 }
-module.exports = {homepage,sign_up,log_in,log_post,sign_post,log_out};
+const text = (req,res)=>{
+    res.render('text')
+}
+
+
+
+
+
+module.exports={text,homepage,login_get,signup_get,login_post,signup_post,log_out,smoothies}

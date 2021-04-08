@@ -132,8 +132,56 @@ header .btn{
   width: 100px;
   margin: -30px auto 20px;
 }
+
+#burger{ width: 100px;
+  margin: 10px auto 20px;
+}
+#cocktail{ width: 100px;
+  margin: 0px auto 10px;
+}
+#spaghetti{ width: 100px;
+  margin: 0px auto 10px;
+}
+
+
+
 footer{
   text-align: center;
   margin-top: 120px;
   color: #aaa;
+}
+
+.text{
+  position: absolute;
+  left: 71px;
+  top: 80px;
+  height:100px;
+  color: #dada31f5;
+  padding: 20px;
+  background-color:violet;
+  z-index: 0;
+}
+p{
+  color: #999;
+  padding: 20px;
+  z-index: 1;
+  padding: auto;
+  background-color:yellowgreen;
+}
+.text span{
+  color:yellow;
+  font-size: 72}
+.pp ul{
+
+  max-width: 1200px;
+  margin: 0 auto;
+}
+.pp ul li{
+  width:25%;
+  display: inline-block;
+  font-size :24px;
+}
+.pp{
+  background-color:#f4f4f4;
+  padding:20px;
 }

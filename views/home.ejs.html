@@ -2,13 +2,36 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>User-System</title>
+  <title>Home-page</title>
   <link rel="stylesheet" href="styles.css">
 </head>
+<body>
+  <nav>
+    <h1><a href="/">Ultimate recepies</a></h1>
+    <ul>
+        <li>Wellcome</li>
+        <li><a href="/logout">log out</a></li>
+        <li><a href="/text">text</a></li>
+        <li><a href="/login">log in</a></li>
+        <li class="btn"><a href="/signup">Sign up</a></li> 
+    </ul>
+  </nav>
+  
+<header>
+    <div class="food-festival">
+        <img src="food-festival.jpg" alt="">
+    </div>
+    <div class="headings">
+        <h2>food-festival</h2> 
+        <h3><strong>By you self</strong></h3>
+        <a href="smoothies" class="btn">View recipes</a>
+    </div>
+</header>
 <style>
     /* google fonts */
 @import url('https://fonts.googleapis.com/css2?family=Quicksand:wght@300;400;500;600;700&display=swap');
 
+.headings{padding:60px;}
 body{
   margin: 20px 40px;
   font-size: 1.2rem;
@@ -140,31 +163,61 @@ header .btn{
   width: 100px;
   margin: -30px auto 20px;
 }
+
+#burger{ width: 100px;
+  margin: 10px auto 20px;
+}
+#cocktail{ width: 100px;
+  margin: 0px auto 10px;
+}
+#spaghetti{ width: 100px;
+  margin: 0px auto 10px;
+}
+
+
+
 footer{
   text-align: center;
   margin-top: 120px;
   color: #aaa;
 }
+
+.text{
+  position: absolute;
+  left: 71px;
+  top: 80px;
+  height:100px;
+  color: #dada31f5;
+  padding: 20px;
+  background-color:violet;
+  z-index: 0;
+}
+p{
+  color: #999;
+  padding: 20px;
+  z-index: 1;
+  padding: auto;
+  background-color:yellowgreen;
+}
+.text span{
+  color:yellow;
+  font-size: 72}
+.pp ul{
+
+  max-width: 1200px;
+  margin: 0 auto;
+}
+.pp ul li{
+  width:25%;
+  display: inline-block;
+  font-size :24px;
+}
+.pp{
+  background-color:#f4f4f4;
+  padding:20px;
+}
+
 </style>
-<body>
-  <nav>
-    <h1><a href="/">Smoothies Story</a></h1>
-    <ul>
-      <li><a href="/login">log in</a></li>
-      <li class="btn"><a href="/signup">Sign up</a></li>
-    </ul>
-  </nav>
-  
-<header>
-    <div class="Smoothies">
-        <img src="smoothie.png" alt="smoothie...">
-    </div>
-    <div class="headings">
-        <h2>Smoothie Recipies</h2> 
-        <h3>By you self</h3>
-        <a href="smoothies" class="btn">View recipes</a>
-    </div>
-</header>
 
 <footer>
     copyright&& Hung 2021
