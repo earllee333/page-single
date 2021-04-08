@@ -2,36 +2,13 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Home-page</title>
+  <title>Recipes</title>
   <link rel="stylesheet" href="styles.css">
 </head>
-<body>
-  <nav>
-    <h1><a href="/">Ultimate recepies</a></h1>
-    <ul>
-        <li>Wellcome</li>
-        <li><a href="/logout">log out</a></li>
-        <li><a href="/text">text</a></li>
-        <li><a href="/login">log in</a></li>
-        <li class="btn"><a href="/signup">Sign up</a></li> 
-    </ul>
-  </nav>
-  
-<header>
-    <div class="food-festival">
-        <img src="food-festival.jpg" alt="">
-    </div>
-    <div class="headings">
-        <h2>food-festival</h2> 
-        <h3><strong>By you self</strong></h3>
-        <a href="smoothies" class="btn">View recipes</a>
-    </div>
-</header>
 <style>
     /* google fonts */
 @import url('https://fonts.googleapis.com/css2?family=Quicksand:wght@300;400;500;600;700&display=swap');
 
-.headings{padding:60px;}
 body{
   margin: 20px 40px;
   font-size: 1.2rem;
@@ -197,7 +174,7 @@ p{
   padding: 20px;
   z-index: 1;
   padding: auto;
-  background-color:yellowgreen;
+  background-color:rgb(209, 226, 175);
 }
 .text span{
   color:yellow;
@@ -218,6 +195,53 @@ p{
 }
 
 </style>
+<body>
+  <nav>
+    <h1><a href="/">Back to home</a></h1>
+    <ul>
+        <li>Wellcome</li>
+        <li><a href="/logout">log out</a></li>
+        <li><a href="/text">text</a></li>
+        <li><a href="/login">log in</a></li>
+        <li class="btn"><a href="/signup">Sign up</a></li>
+    </ul>
+  </nav>
+  
+
+<ul class="recipes">
+    <li class="recipe">
+        <img id="burger" src="./public/burger.png" alt="smoothie icon">
+        <h4>Ultimate burger</h4>
+        <p>Banana, Vanilla ice cream, Milk</p>
+    </li>
+    <li class="recipe">
+        <img id="cocktail" src="./public/cockail.jpg" alt="smoothie icon">
+        <h4>Fancy cocktail</h4>
+        <p>Peach, Pinapple, Apple juice</p>
+    </li>
+    <li class="recipe">
+        <img id="spaghetti" src="./public/pasta.jpg" alt="smoothie icon">
+        <h4>Spaghetti with meatball</h4>
+        <p>Oats, Peanut butter, Milk, Banana, Blueberries</p>
+    </li>
+    <li class="recipe">
+        <img src="./public/ramen.png" alt="smoothie icon">
+        <h4>Authentic ramen</h4>
+        <p>Banana, Vanilla ice cream, Milk</p>
+    </li>
+    <li class="recipe">
+        <img src="./public/currey.ico" alt="currey icon">
+        <h4>India spice curry</h4>
+        <p>Banana, Vanilla ice cream, Milk</p>
+    </li>
+    <li class="recipe">
+        <img src="./public/smoothie.png" alt="smoothie recipe icon">
+        <h4>Protein smoothie</h4>
+        <p>Oats, Peanut butter, Milk, Banana, Blueberries</p>
+      </li>
+</ul>
+
+
 
 <footer>
     copyright&& Hung 2021
